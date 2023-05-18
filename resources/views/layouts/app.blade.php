@@ -20,7 +20,7 @@
     </head>
     <body class="font-sans bg-gray-background text-gray-900 text-sm ">
        <header class="  flex items-center justify-between px-8 py-4">
-         <a href="#">liu liu oudoor</a>
+         <a href="#" class="text-emerald-500" >liu liu oudoor life</a>
          <div class="flex items-center">
             @if (Route::has('login'))
             <div class="px-6 py-4 mt-6">
