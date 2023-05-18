@@ -59,17 +59,37 @@
      <div class="w-70 mr-5">
         Lorem ipsum dolor sit n at quidem  accusantium officia ipsum ab. Hic facilis facere blanditiis quaerat voluptate laudantium, assumenda quo vero inventore nesciunt perferendis ea illum quas delectus ipsam amet deleniti molestiae excepturi similique quidem accusamus. Quae voluptas quam, nisi officiis, reiciendis tempora consectetur pariatur beatae suscipit dolore optio corrupti molestiae adipisci distinctio illum et iure corporis eos animi quisquam odio asperiores.
      </div>
-     <div class= " w-175 mr-5">
-       <nav class="flex items-center jusfify-between text-xs">
-   <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
-     <li>
-        <a href="" class="border-b-4 pb-3 border-blue">All Ideas (99)</a>
-    </li>
+     <div class= " w-175 ">
+       <nav class="flex items-center  justify-between text-xs">
+                <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10 ">
+                    <li>
+                    <a href="" class="border-b-4 pb-3 border-blue">所有想法(99)</a>
+                </li>
+                    <li>
+                    <a href="" class="text-gray-400 transition duration-100 ease-in border-b-4 pb-3 hover:border-blue">諮詢 (50)</a>
+                </li>
+                    <li>
+                    <a href="" class="text-gray-400 transition duration-100 ease-in border-b-4 pb-3 hover:border-blue">進行中 (50)</a>
+                </li>
 
-   </ul>
-    
+                </ul>
+
+
+                <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
+                <li>
+                    <a href="" class="border-b-4 pb-3 border-blue">履行(10)</a>
+                </li>
+                <li>
+                    <a href="" class="text-gray-400 transition duration-100 ease-in border-b-4 pb-3 hover:border-blue">已結束 (55)</a>
+                </li>
+
+
+                </ul>
+
 
        </nav>
+       <div class="mt-8"></div>
+       {{$slot}}
      </div>
        </main>
     </body>
