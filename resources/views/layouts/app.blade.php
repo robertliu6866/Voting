@@ -20,7 +20,7 @@
     </head>
     <body class="font-sans bg-gray-background text-gray-900 text-sm ">
        <header class="  flex items-center justify-between px-8 py-4">
-         <a href="#">liu oudoor</a>
+         <a href="#">liu liu oudoor</a>
          <div class="flex items-center">
             @if (Route::has('login'))
             <div class="px-6 py-4 mt-6">
@@ -54,5 +54,23 @@
             </a>
          </div>
        </header>
+       <main class="container mx-auto max-w-custom flex" >
+
+     <div class="w-70 mr-5">
+        Lorem ipsum dolor sit n at quidem  accusantium officia ipsum ab. Hic facilis facere blanditiis quaerat voluptate laudantium, assumenda quo vero inventore nesciunt perferendis ea illum quas delectus ipsam amet deleniti molestiae excepturi similique quidem accusamus. Quae voluptas quam, nisi officiis, reiciendis tempora consectetur pariatur beatae suscipit dolore optio corrupti molestiae adipisci distinctio illum et iure corporis eos animi quisquam odio asperiores.
+     </div>
+     <div class= " w-175 mr-5">
+       <nav class="flex items-center jusfify-between text-xs">
+   <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
+     <li>
+        <a href="" class="border-b-4 pb-3 border-blue">All Ideas (99)</a>
+    </li>
+
+   </ul>
+    
+
+       </nav>
+     </div>
+       </main>
     </body>
 </html>
