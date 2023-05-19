@@ -52,7 +52,7 @@
          <h4 class="text-xl font-semibold">
              <a href="#" class="hover:underline">北歐徒步旅行</a>
          </h4>
-         <div class="text-gray-600 mt-3">
+         <div class="text-gray-600 mt-3 line-clamp-2">
 
             北歐有著歐洲最完好的自然保護區。如果你喜歡置身於大自然中，徒步探索美景，
             那麼就到芬蘭東北部的熊環線或是挪威尤通黑門國家公園內或是瑞典著名的國王之路體驗吧。
@@ -69,10 +69,15 @@
               <div class="flex items-center space-x-2">
 
                 <div class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">瞧瞧</div> 
-             <button class=" bg-gray-100 hover:bg-gray-200 rounded-full transition duration-100 ease-in h-7 py-2 px-3">
+             <button class=" relative bg-gray-100 hover:bg-gray-200 rounded-full transition duration-100 ease-in h-7 py-1 px-3">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
                   </svg>
+                  <ul class="absolute w-44 text-left font-semibold bg-white shadow-lg rounded-xl py-3 ml-8" >
+
+                    <li><a href="" class="hover:bg-gray-100 block  transition duration-100 ease-in  px-5 py-3">fewfwjf</a></li>
+                    <li><a href="" class="hover:bg-gray-100 block  transition duration-100 ease-in  px-5 py-3">刪除</a></li>
+                  </ul>
              </button>
               </div>
          </div>

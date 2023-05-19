@@ -29,6 +29,7 @@ export default {
 
                         }, 
                         spacing:{
+                            44: '11rem',
                             70: '17.5rem',
                             175: '43.75rem',
                         },
@@ -42,5 +43,9 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/line-clamp'),
+    
+    ],
 };
