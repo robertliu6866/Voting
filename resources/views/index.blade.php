@@ -44,11 +44,15 @@
      </div>
      
   </div>
-  <div class="flex px-2 py-6">
-    <a href="" class="flex-none">
-        <img src="https://i02piccdn.sogoucdn.com/9b3d323198a80650" alt="avatar" class="w-14 h-14 rounded-xl">
-    </a>
-    <div class="mx-4">
+  <div class="flex flex-1 px-2 py-6">
+   <div class="flex-none">
+
+      <a href="" >
+         <img src="https://i02piccdn.sogoucdn.com/9b3d323198a80650" alt="avatar" class="w-14 h-14 rounded-xl">
+      </a>
+   </div>
+   
+    <div class="w-full mx-4">
          <h4 class="text-xl font-semibold">
              <a href="#" class="hover:underline">台灣玉山爬山</a>
          </h4>
@@ -67,7 +71,7 @@
               <div class="flex items-center space-x-2">
 
                 <div class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">揪團中</div> 
-             <button class=" relative bg-gray-100 hover:bg-gray-200 rounded-full transition duration-100 ease-in h-7 py-1 px-3">
+             <button class=" relative bg-gray-100 hover:bg-gray-200  border  rounded-full transition duration-100 ease-in h-7 py-1 px-3">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
                   </svg>
@@ -102,7 +106,7 @@
      </div>
      <div class="flex px-2 py-6">
        <a href="" class="flex-none">
-           <img src="https://i04piccdn.sogoucdn.com/d0e85da08e9e841d" alt="avatar" class="w-14 h-14 rounded-xl">
+           <img src="https://cdn-origin.cool-style.com.tw/cool/2015/03/69-700x467.jpg" alt="avatar" class="w-14 h-14 rounded-xl">
        </a>
        <div class="mx-4">
             <h4 class="text-xl font-semibold">
@@ -153,7 +157,7 @@
      </div>
      <div class="flex px-2 py-6">
        <a href="" class="flex-none">
-           <img src="https://scontent.ftpe8-4.fna.fbcdn.net/v/t39.30808-6/278217986_10227073769180293_3974764083770939990_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ye0_SRqzzw8AX9SHT9C&_nc_ht=scontent.ftpe8-4.fna&oh=00_AfCHLefc6QET29N0G7jMHtCVi5ICLfd31yPidsRURKzD9Q&oe=646D0F47" alt="avatar" class="w-14 h-14 rounded-xl">
+           <img src="https://cdn-origin.cool-style.com.tw/cool/2015/03/96-700x944.jpg" alt="avatar" class="w-14 h-14 rounded-xl">
        </a>
        <div class="mx-4">
             <h4 class="text-xl font-semibold">

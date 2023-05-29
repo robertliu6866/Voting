@@ -136,8 +136,9 @@
        <div class="mt-8"></div>
        {{$slot}}
      </div>
+    
    
        </main>
-      
+   
     </body>
 </html>
