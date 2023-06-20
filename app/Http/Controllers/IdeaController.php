@@ -14,7 +14,7 @@ class IdeaController extends Controller
     public function index()
     {
         return view('idea.index',[
-            'ideas' => idea::all(),
+            'ideas' => Idea::simplePaginate(5),
 
         ]);
     }

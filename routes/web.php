@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ideaController::class,'index'])->name('idea.index');
 
-Route::get('/idea/{idea}', [ideaController::class,'show'])->name('idea.show');
+Route::get('/idea/{idea:slug}', [ideaController::class,'show'])->name('idea.show');
 
 
 
