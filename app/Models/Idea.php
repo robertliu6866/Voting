@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class idea extends Model
 {
     use HasFactory, Sluggable;
-
+    //分頁常數設定值ideacontroller.php
+    const PAGINATION_COUNT = 10;
 protected $guarded = [];
 
 public function sluggable():array
