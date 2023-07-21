@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
+       
         <title>Laravel Voting</title>
 
         <!-- Fonts -->
@@ -19,6 +19,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+     
     </head>
     <body class="font-sans bg-gray-background text-gray-900 text-sm ">
        <header class="  flex  flex-col md:flex-row items-center justify-between px-8 py-4">

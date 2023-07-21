@@ -5,22 +5,26 @@ use function Pest\Laravel\get;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use App\Models\idea;
+use App\Models\Idea;
+use App\Models\Category;
 
 
 
 
 test('list of ideas shows on main page',function()
    {
-
-
+   $categoryOne = Category::factory()->create(['name'=> '百岳行程']);
+   $categoryTwo = Category::factory()->create(['name'=> '越野跑步行程']);
+    
     $ideaOne = Idea::factory()->create([
         'title' => 'My First Idea',
+        'category_id' => $categoryOne->id,
         'description' => 'Description of my first idea',
     ]);
 
     $ideaTwo = Idea::factory()->create([
         'title' => 'My Second Idea',
+        'category_id' => $categoryTwo->id,
         'description' => 'Description of my Second idea',
     ]);
 //斷言成功斷言響應具有成功（>= 200 且 < 300）HTTP 狀態代碼：assertSuccessful();
@@ -28,9 +32,11 @@ test('list of ideas shows on main page',function()
     $response -> assertSuccessful();
     $response -> assertSee($ideaOne->title);
     $response -> assertSee($ideaOne->description);
+    $response -> assertSee($categoryOne->name);
 
     $response -> assertSee($ideaTwo->title);
     $response -> assertSee($ideaTwo->description);
+    $response -> assertSee($ideaTwo->name);
     
    });
 
@@ -38,11 +44,13 @@ test('list of ideas shows on main page',function()
 
 
 //  Test show page
-test('single idea shssows correctly on the show page',function()
+test('single idea shsows correctly on the show page',function()
    {
-
+    
+    $categoryOne = Category::factory()->create(['name'=> '百岳行程']);
 
     $idea = Idea::factory()->create([
+        'category_id' => $categoryOne->id,
         'title' => 'My First Idea',
         'description' => 'Description of my first idea',
     ]);
@@ -52,6 +60,7 @@ test('single idea shssows correctly on the show page',function()
       $response -> assertSuccessful();
       $response -> assertSee($idea->title);
       $response -> assertSee($idea->description);
+      $response -> assertSee($categoryOne->name);
   
   
 
@@ -60,8 +69,11 @@ test('single idea shssows correctly on the show page',function()
 
 
    test('ideas pagiantion woeks',function(){
+$categoryOne = Category::factory()->create(['name'=> '百岳行程']);
 
- Idea::factory(Idea::PAGINATION_COUNT +1)->create();
+ Idea::factory(Idea::PAGINATION_COUNT +1)->create([
+    'category_id' => $categoryOne->id,
+ ]);
 
  $ideaOne =Idea::find(1);
  $ideaOne->title = 'My First Idea';
@@ -89,7 +101,10 @@ test('single idea shssows correctly on the show page',function()
 
    test('same_idea_title_different_slugs',function()
    {
+    $categoryOne = Category::factory()->create(['name'=> '百岳行程']);
+
        $ideaOne = Idea::factory()->create([
+        'category_id' => $categoryOne->id,
            'title' => 'My First Idea',
            'description' => 'Description for my first idea',
        ]);
