@@ -1,6 +1,9 @@
 <x-guest-layout>
+  
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
+
+    <div><p>登入這裡是你輩子棒！的選擇</p></div>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf

@@ -73,44 +73,49 @@
           class=" bg-white md:sticky md:top-8 border-2 rounded-xl mt-16">
             <div class="text-center px-6 py-2 pt-6">
              <h3 class="font-semibold text-base"> 許願行程</h3>
-               <p class="text-xs mt-4">讓大家知道發起一個自組團行程</p>
+               <p class="text-xs mt-4">
+                @auth
+                讓大家知道發起一個自組團行程
+                @else
+                   登入後新增想法
+                @endauth
+
+            </p>
 
             </div>
-            <form action="#" method="POST" class="  space-y-4 px-4 py-6">
-               <div>
-                <input type="text" class="text-sm w-full bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2 border-none "  placeholder= "地點"  >
-               </div>
-               <div>
-                <select name="category_add" id="category_add" class="text-sm w-full rounded-xl  bg-gray-100 border-none px-4 py-2">
-                        <option value="Category One">百岳</option>
-                        <option value="Category Two">郊山</option>
-                        <option value="Category Three">健行路線</option>
-                        <option value="Category Four">越野跑</option>
-                 </select>
 
-               </div>
-               <div>
-         
-                    <textarea class="w-full border-none bg-gray-100  rounded-xl  placeholder:\-gray-900 text-sm px-4 py-2" placeholder="細節" name="idea" id="idea" cols="30" rows="4"></textarea>
-               </div>
-               <div class="flex items-center justify-between space-x-3">
+            @auth
+            <livewire:create-idea />
+            
+            @else
+            <div class="my-6 text-center ">
+                <a
+                href="{{ route('login') }}"
                 
-                <button type="button" class="flex items-center justify-center w-1/2 h-11 text-xs  bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400  transition duration-150 ease-in px-6 py-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
-                      </svg>
-                      
-                    <span class="ml-2 text-xs">檔案</span>
-                </button>
-
-                <button type="sumit" class="flex items-center justify-center w-1/2 h-11 text-xs text-rose-50   bg-green font-semibold rounded-xl border border-gray-200 hover:bg-green-hover  transition duration-150 ease-in px-6 py-2">
+                class="inline-block justify-center w-1/2 h-11 text-xs text-rose-50  
+                 bg-green font-semibold rounded-xl border border-gray-200 hover:bg-green-hover 
+                  transition duration-150 ease-in px-6 py-2"
+                  >
+                  <span class="ml-2 text-xs">登入</span>
                    
                       
-                    <span class="ml-2 text-xs">送出</span>
-                </button>
-               </div>
+                </a>
+                <a
+                href="{{ route('register') }}"
+                
+                class="inline-block justify-center w-1/2 h-11 text-xs text-rose-50  
+                 bg-green font-semibold rounded-xl border border-gray-200 hover:bg-green-hover 
+                  transition duration-150 ease-in px-6 py-2 mt-4"
+                  >
+                  <span class="ml-2 text-xs ">註冊</span>
+                   
+                      
+                </a>
 
-            </form>
+            </div>
+            @endauth
+
+
           </div>
      </div>
      <div class= "w-full px-2 md:px-0 md:w-175 ">
