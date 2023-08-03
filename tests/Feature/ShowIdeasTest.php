@@ -102,13 +102,13 @@ $statusOpen = Status::factory()->create(['name'=>'揪團中','classes' => 'bg-gr
  $ideaEleven->save();
 
  $response  =  $this->get('/');
- $response -> assertSee($ideaOne->title);
- $response -> assertDontSee($ideaEleven->title);
+ $response -> assertSee($ideaEleven->title);
+ $response -> assertDontSee($ideaOne->title);
 
  $response  =  $this->get('/?page=2');
  
- $response -> assertSee($ideaEleven->title);
- $response -> assertDontSee($ideaOne->title);
+ $response -> assertSee($ideaOne->title);
+ $response -> assertDontSee($ideaEleven->title);
    });
 
 

@@ -13,7 +13,7 @@ class CreateIdea extends Component
     public $description;
 
     protected  $rules =[
-    'title' => 'required|min:4',
+    'title' => 'required',
     'category' => 'required|integer',
     'description' => 'required|min:4',
 
