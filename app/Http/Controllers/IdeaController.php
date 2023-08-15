@@ -14,9 +14,10 @@ class IdeaController extends Controller
     public function index()
     {
         return view('idea.index',[
-            'ideas' => Idea::with ('user','category','status')
+            'ideas' =>  Idea::with ('user','category','status')
+            ->withCount('votes')
              ->orderBy('id','desc')
-            ->simplePaginate(Idea::PAGINATION_COUNT),
+            ->simplePaginate(Idea::PAGINATION_COUNT)
 
         ]);
     }
@@ -41,9 +42,10 @@ class IdeaController extends Controller
      * Display the specified resource.
      */
     public function show(idea $idea)
-    {
+   {
         return view('idea.show',[
             'idea'=>$idea,
+            'votesCount' => $idea->votes->count(),
         ]);
     }
 

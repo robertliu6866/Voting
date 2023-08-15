@@ -8,12 +8,14 @@ use Tests\TestCase;
 use App\Models\Idea;
 use App\Models\Category;
 use App\Models\Status;
+use App\Models\User;
 
 
 
 
 test('list of ideas shows on main page',function()
    {
+    $user = User::factory()->create();
    $categoryOne = Category::factory()->create(['name'=> '百岳行程']);
    $categoryTwo = Category::factory()->create(['name'=> '越野跑步行程']);
 
@@ -21,7 +23,8 @@ test('list of ideas shows on main page',function()
   $statusConidering =  Status::factory()->create(['name'=>'已成團','classes' => 'bg-blue text-white']);
 
     
-    $ideaOne = Idea::factory()->create([
+    $ideaOne = Idea::factory()->create([ 
+         'user_id' =>$user->id,
         'title' => 'My First Idea',
         'category_id' => $categoryOne->id,
         'status_id' => $statusOpen->id,
@@ -29,6 +32,7 @@ test('list of ideas shows on main page',function()
     ]);
 
     $ideaTwo = Idea::factory()->create([
+         'user_id' =>$user->id,  
         'title' => 'My Second Idea',
         'category_id' => $categoryTwo->id,
         'status_id' => $statusConidering->id,
@@ -56,12 +60,13 @@ test('list of ideas shows on main page',function()
 //  Test show page
 test('single idea shsows correctly on the show page',function()
    {
-    
+    $user = User::factory()->create();
     $categoryOne = Category::factory()->create(['name'=> '百岳行程']);
     $statusOpen = Status::factory()->create(['name'=>'揪團中','classes' => 'bg-gray-200']);
  
 
     $idea = Idea::factory()->create([
+        'user_id' =>$user->id,  
         'category_id' => $categoryOne->id,
          'status_id' =>  $statusOpen->id,
         'title' => 'My First Idea',
@@ -84,11 +89,13 @@ test('single idea shsows correctly on the show page',function()
 
 
    test('ideas pagiantion woeks',function(){
+    $user = User::factory()->create();
 $categoryOne = Category::factory()->create(['name'=> '百岳行程']);
 
 $statusOpen = Status::factory()->create(['name'=>'揪團中','classes' => 'bg-gray-200']);
 
  Idea::factory(Idea::PAGINATION_COUNT +1)->create([
+    'user_id' =>$user->id,  
     'category_id' => $categoryOne->id,
      'status_id' =>  $statusOpen->id,
  ]);
@@ -119,10 +126,12 @@ $statusOpen = Status::factory()->create(['name'=>'揪團中','classes' => 'bg-gr
 
    test('same_idea_title_different_slugs',function()
    {
+    $user = User::factory()->create();
     $categoryOne = Category::factory()->create(['name'=> '百岳行程']);
     $statusOpen = Status::factory()->create(['name'=>'揪團中','classes' => 'bg-gray-200']);
 
        $ideaOne = Idea::factory()->create([
+        'user_id' =>$user->id,  
         'category_id' => $categoryOne->id,
         'status_id' =>  $statusOpen->id,
            'title' => 'My First Idea',
