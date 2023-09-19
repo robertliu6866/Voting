@@ -9,9 +9,12 @@
         </a>
     </div>
 
+    <livewire:idea-show 
+    :idea="$idea" 
+    :votesCount="$votesCount"
+    />
     
     
-   <livewire:idea-show :idea="$idea" :votesCount="$votesCount"/>
 
       
       <div class="comments-container relative space-y-6 md:ml-22 pt-6 my-8 mt-1">

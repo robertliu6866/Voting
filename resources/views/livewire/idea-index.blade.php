@@ -1,23 +1,59 @@
-<div 
+{{-- <div 
 x-data
-@click="const target = $event.target.tagName.toLowerCase()
+@click="
+const target = $event.target.tagName.toLowerCase()
 const ignores = ['button','svg','path','a', 'img']
 const ideaLink = $event.target.closest('.idea-container').querySelector('.idea-link')
 
 !ignores.includes(target) && ideaLink.click()"
+class="idea-container hover:shadow-md  transition duration-100 ease-in bg-white rounded-xl flex "
+
+> --}}
 
 
+   <div
+   x-data
+   @click="
+   const clicked = $event.target
+   const target = clicked.tagName.toLowerCase()
+   
+   const ignores = ['button', 'svg', 'path', 'a']
+   
+   if (! ignores.includes(target)) {
+      clicked.closest('.idea-container').querySelector('.idea-link').click()
+   }
+   "
+   class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer"
+   >
 
-class="idea-container hover:shadow-md  transition duration-100 ease-in bg-white rounded-xl flex ">
- <div class="hidden md:block border-r border-gray-100 px-5 py-8">
-    <div class="text-center" >
-       <div class="font-semibold text-2xl"> {{$votesCount}}</div>
-       <div class="text-gray-500">參加</div>
+   
+   
+   <div class="hidden md:block border-r border-gray-100 px-5 py-8">
+
+
+     <div class="text-center" >
+      <div class="font-semibold text-2xl @if ($hasVoted) text-blue @endif"> {{$votesCount}}</div>
+      <div class="text-gray-500">位</div>
+         
+   
 
     </div>
     <div class="mt-8">
-       <button class="w-20 bg-gray-200 border border-gray-200 hover:border-gray-400  
-       font-bold text-xxs uppercase rounded-xl  transition duration-100 ease-in  px-4 py-3">+1</button>
+      @if ($hasVoted)
+
+      <button 
+        wire:click.prevent="vote"
+      class="w-20 bg-blue border border-blue hover:bg-blue-hover
+      font-bold text-xxs text-white  uppercase rounded-xl  transition duration-100 ease-in  px-4 py-3">已參加</button>
+      @else
+      
+      <button 
+      wire:click.prevent="vote"
+      
+      class="w-20 bg-gray-200 border border-gray-200 hover:border-gray-400  
+      font-bold text-xxs uppercase rounded-xl  transition duration-100 ease-in  px-4 py-3">+1</button>
+       @endif
+
     </div>
     
  </div>
@@ -28,11 +64,12 @@ class="idea-container hover:shadow-md  transition duration-100 ease-in bg-white 
 
      <a href="" >
         <img src="{{$idea->user->getAvatar()}}" alt="avatar" class="w-14 h-14 rounded-xl">
+         <div class=" text-xs"  mt-20>主揪＿{{$idea->user->name}}</div>
      </a>
   </div>
   
    <div class="w-full flex flex-col justify-between md:mx-4">
-        <h4 class="text-xl font-semibold mt-2 mx-2 md:mt-0">
+        <h4 class="text-xl font-extralight  mt-2 mx-2 md:mt-0">
             <a href="{{route('idea.show',$idea)}}" class="idea-link hover:underline">{{$idea->title}}</a>
         </h4>
         <div class="text-gray-600 mt-3 line-clamp-2">
@@ -53,7 +90,8 @@ class="idea-container hover:shadow-md  transition duration-100 ease-in bg-white 
 
               x-data ="{isOpen: false }"
              
-             class="flex items-center space-x-2 mt-4 md:mt-0">
+             class="flex items-center space-x-2 mt-4 md:mt-0"
+             >
 
                <div class=" {{$idea->status->classes}} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">{{$idea->status->name}}</div> 
             <button
@@ -81,14 +119,40 @@ class="idea-container hover:shadow-md  transition duration-100 ease-in bg-white 
 
              <div class="flex items-center md:hidden mt-4 md:mt-0">
               <div class=" bg-gray-100 text-center rounded-xl h-10 px-4 py-2 pr-8 ">
-                 <div class="text-sm font-bold leading-none">{{$votesCount}}<</div>
-                 <div class="text-xxs font-semibold leading-none text-gray-400">參加1</div>
+                <div class="text-sm font-bold leading-none @if ($hasVoted) text-blue @endif ">{{$votesCount}}</div>
+              <div class="text-xxs font-semibold leading-none text-gray-400">人數</div>
+              
               </div>
              
 
+
+
+
+
+         
+              @if ($hasVoted)
+
+      <button
+
+      wire:click.prevent="vote"
+      
+      class="w-20 bg-blue border border-blue hover:bg-blue-hover
+      font-bold text-xxs text-white  uppercase rounded-xl  transition duration-100 ease-in  px-4 py-3">已參加</button>
+
+              @else
+
+              <button 
+              wire:click.prevent="vote"
+              class="w-20 bg-gray-200 border border-gray-200 hover:border-gray-400  
+              font-bold text-xxs uppercase rounded-xl  transition duration-100 ease-in  px-4 py-3 -mx-4"
+              >＋1
+            </button>
+              @endif
+
+           
+             
+
                   
-              <button class="w-20 bg-gray-200 border border-gray-200 hover:border-gray-400  
-              font-bold text-xxs uppercase rounded-xl  transition duration-100 ease-in  px-4 py-3 -mx-4">+1</button>
              </div>
         </div>
       

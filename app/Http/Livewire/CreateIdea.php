@@ -36,6 +36,7 @@ class CreateIdea extends Component
 
               return redirect()->route('idea.index');
             }
+            
             abort(Response::HTTP_FORBIDDEN);
 }
 

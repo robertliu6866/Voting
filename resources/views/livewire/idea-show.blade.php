@@ -21,7 +21,7 @@
               </div>
               <div class="flex flex-col md:flex-row md:items-center justify-between mt-6">
                   <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
-                     <div class="hidden md:block font-bold text-gray-900">{{$idea->user->name}}</div>
+                     <div class="hidden md:block font-bold text-gray-900">{{$idea->user->name}}<</div>
                      <div class="hidden md:block">&bull;</div>
                      <div >{{ $idea->created_at->diffForHumans()}}</div>
                      <div>&bull;</div>
@@ -58,17 +58,37 @@
                     
                   </button>
                    </div>
-    
+                   {{-- 點擊按鈕 如果上尚未登入賺到登入畫面 --}}
                    <div class="flex items-center md:hidden mt-4 md:mt-0">
                        <div class="bg-gray-100 text-center rounded-xl h-10 px-4 py-2 pr-8">
-                           <div class="text-sm font-bold leading-none">{{$votesCount}}</div>
-                           <div class="text-xxs font-semibold leading-none text-gray-400">山友</div>
+                           <div class="text-sm font-bold leading-none @if ($hasVoted) text-blue @endif">{{$votesCount}}</div>
+                           <div class="text-xxs font-semibold leading-none text-gray-400">人數</div>
                        </div>
+                       @if($hasVoted)
+                   
+                   <button
+                   
+                   wire:click.prevent="vote"
+                   class="w-20 text-white bg-blue border border-blue font-bold text-xxs uppercase
+                    rounded-xl   hover:bg-blue-hover  transition duration-150 
+                    ease-in px-4 py-3 -mx-5"
+               >
+                   已參加
+                  
+               </button>
+              
+
+                       @else
                        <button
-                           class="w-20 bg-gray-200 border border-gray-200 font-bold text-xxs uppercase rounded-xl hover:border-gray-400 transition duration-150 ease-in px-4 py-3 -mx-5"
-                       >
-                           ＋1
-                       </button>
+
+                       wire:click.prevent="vote"
+                       class="w-20   bg-gray-200 border border-gray-200 font-bold text-xxs uppercase
+                        rounded-xl hover:border-gray-400 transition duration-150 
+                        ease-in px-4 py-3 -mx-5"
+                   >
+                       ＋1
+                   </button>
+                       @endif
                    </div>
     
                  
@@ -244,19 +264,36 @@
     
     
        <div class="  bg-white font-semibold text-center rounded-xl  px-2  ">
-           <div class="text-xl leading-snug ">{{$votesCount}}</div>
-           <div class="text-gray-400 text-xs leading-none">已參加</div>
+           <div class="text-xl leading-snug   @if ($hasVoted) text-blue @endif">{{$votesCount}}</div>
+           <div class="text-gray-400 text-xs leading-none">人數</div>
     
     
        </div>
-       <button type="button" 
+       @if ($hasVoted)
+       <button 
+       wire:click.prevent="vote"
+       type="button" 
+       class="flex items-center justify-center w-32 h-11 text-xs uppercase
+         bg-blue text-white font-semibold rounded-xl border border-blue
+          hover:bg-blue-hover  transition duration-150 ease-in px-6 py-2"
+          >
+          <span class="mr-1 text-xs">已參加</span>
+      </button>
+    
+        @else
+       <button
+       wire:click.prevent="vote"
+       type="button" 
        class="flex items-center justify-center w-32 h-11 text-xs uppercase
          bg-gray-200 font-semibold rounded-xl border border-gray-200
           hover:border-gray-400  transition duration-150 ease-in px-6 py-2"
           >
     
-           <span class="mr-1 text-xs">參加</span>
+           <span class="mr-1 text-xs">+1</span>
        </button>
+       @endif
+
+
     
     </div>
     </div>{{-- end buttons-container--}}

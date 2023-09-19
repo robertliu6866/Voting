@@ -60,7 +60,7 @@ class User extends Authenticatable
         .md5($this->email)
         .'?s=200'
         .'&d=wavatar';
-        
+         
 
     }
 }

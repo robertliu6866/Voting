@@ -23,7 +23,14 @@
     </head>
     <body class="font-sans bg-gray-background text-gray-900 text-sm ">
        <header class="  flex  flex-col md:flex-row items-center justify-between px-8 py-4">
-         <a href="#" class="text-emerald-500" >liu liu oudoor life</a>
+           <a href="/" class="text-emerald-500" >liu liu oudoor life</a>
+          
+           <div>
+
+               <a href="/" class="text-emerald-500" >切換地區</a>
+               
+            </div>
+           
          <div class="flex  items-center mt-2 md:mt-0">
             @if (Route::has('login'))
             <div class="px-6 py-4 mt-6">

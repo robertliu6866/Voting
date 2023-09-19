@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Idea;
-use App\Models\User;
 use App\Models\Status;
+use App\Models\User;
 use App\Models\Vote;
-
-
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +19,8 @@ class DatabaseSeeder extends Seeder
       User::factory()->create([
          'name' => 'liuliu',
          'email' => 'robert@gmail.com',
+         
+         
 
 
       ]);
@@ -37,6 +38,8 @@ class DatabaseSeeder extends Seeder
       Status::factory()->create(['name'=>'想法中','classes' => 'bg-gray-200']);
 
       Idea::factory(100)->create();
+     
+
       //generate unique votes ensure idea_id and user_id are unique for each row
       //生成唯一的投票，確保每一行的 idea_id 和 user_id 都是唯一的
 
