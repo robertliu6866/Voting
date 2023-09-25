@@ -13,6 +13,9 @@ class Idea extends Model
     use HasFactory, Sluggable;
     //分頁常數設定值ideacontroller.php
     const PAGINATION_COUNT = 10;
+    const CATEGORY_TUTORIAL_REQUEST = 'Tutorial Request';
+    const CATEGORY_LARACASTS_FEATURE = 'Laracasts Feature';
+    
 protected $guarded = [];
 
 public function sluggable():array
@@ -64,6 +67,10 @@ public function votes(){
 
  public function  vote(User $user)
  {
+
+    if ($this->isVotedByUser($user)){
+        throw new  DuplicateVoteException;
+    }
     Vote::create([
         'idea_id' => $this->id,
         'user_id' => $user->id,
@@ -75,10 +82,17 @@ public function votes(){
 
  public function  removeVote(User $user)
  {
-    Vote::where('idea_id',$this->id)
+    $voteToDelete =  Vote::where('idea_id',$this->id)
     ->where('user_id',$user->id)
-    ->first()
-    ->delete();
+    ->first();
+    if ($voteToDelete){
+        ($voteToDelete)-> delete();
+    }  else {
+
+        throw new VoteNotFoundException;
+            
+        
+    }
     
  }
 

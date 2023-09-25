@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Livewire;
+use App\Exceptions\DuplicateVoteException;
+use App\Exceptions\VoteNotFoundException;
 use App\Models\Idea;
 use Livewire\Component;
 
@@ -24,16 +26,29 @@ public function vote()
     if (! auth()->check()) {
         return redirect(route('login'));
     }
+    if
+    ($this->hasVoted){
+      try{
 
-    if ($this->hasVoted) {
-        $this->idea->removeVote(auth()->user());
-        $this->votesCount--;
-        $this->hasVoted = false;
-    } else {
-        $this->idea->vote(auth()->user());
-        $this->votesCount++;
-        $this->hasVoted = true;
+          $this->idea->removeVote(auth()->user());
+      } catch(VoteNotFoundException $e){
+          //審麼都不做
+      }
+    $this->votesCount--;
+    $this->hasVoted = false;
+
+
+
+    }else{
+      try{
+          $this->idea->vote(auth()->user());
+      }catch (DuplicateVoteException $e){
+          //do noting
+      }
+     $this->votesCount++;
+     $this->hasVoted = true;
     }
+ 
 }
 
     public function render()

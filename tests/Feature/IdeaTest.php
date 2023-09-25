@@ -1,6 +1,8 @@
 <?php
 // namespace Tests\Feature;
-namespace Tests\Unit;
+namespace Tests\Feature;
+use App\Exceptions\DuplicateVoteException;
+use App\Exceptions\VoteNotFoundException;
 use App\Http\Livewire\IdeaIndex;
 use App\Models\Category;
 use App\Models\Idea;
@@ -89,6 +91,40 @@ use Tests\TestCase;
     
     });
 
+
+    test('voting_for_an_idea_thats_already_voted_for_throws_exception',function()
+    {
+ 
+        $user = User::factory()->create();
+      
+
+        $categoryOne = Category::factory()->create(['name'=> '百岳行程']);
+        $categoryTwo = Category::factory()->create(['name'=> '越野跑步行程']);
+        
+        $statusOpen = Status::factory()->create(['name'=>'揪團中','classes' => 'bg-gray-200']);
+        $statusConidering =  Status::factory()->create(['name'=>'已成團','classes' => 'bg-blue text-white']);
+        
+        
+        $idea = Idea::factory()->create([ 
+            'user_id' =>$user->id,
+            'title' => 'My First Idea',
+            'category_id' => $categoryOne->id,
+            'status_id' => $statusOpen->id,
+            'description' => 'Description of my first idea',
+        ]);
+
+        Vote::factory()->create([
+            'idea_id' => $idea->id,
+            'user_id' => $user->id,
+
+             ]);
+
+             $this->expectException(DuplicateVoteException::class);
+
+    
+        $idea->vote($user);
+
+    });
 
 
 
