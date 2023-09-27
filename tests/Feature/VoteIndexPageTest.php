@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Http\Livewire\IdeaIndex;
+use App\Http\Livewire\IdeasIndex;
 use App\Models\Category;
 use App\Models\Idea;
 use App\Models\Status;
@@ -44,37 +45,49 @@ test('index_page_contains_idea_index_livewire_component',function()
 });
 
 
+test(' ideas_index_livewire_component_correctly_receives_votes_count',function()
+
+{
+    $user = User::factory()->create();
+    $userB = User::factory()->create();
 
 
 
-
-//顯示頁面正確收到票數'
-// test('index_page_correctly_receives_votes_count',function()
-
+    $categoryOne = Category::factory()->create(['name'=> '百岳行程']);
+   
  
-// {
-
-//     $user = User::factory()->create();
-//         $userB = User::factory()->create();
-
-//         $idea = Idea::factory()->create();
-
-//         Vote::factory()->create([
-//             'idea_id' => $idea->id,
-//             'user_id' => $user->id,
-//         ]);
-
-//         Vote::factory()->create([
-//             'idea_id' => $idea->id,
-//             'user_id' => $userB->id,
-//         ]);
-
-//         // Livewire::test(IdeasIndex::class)
-//         //     ->assertViewHas('ideas', function ($ideas) {
-//         //         return $ideas->first()->votes_count == 2;
+   $statusOpen = Status::factory()->create(['name'=>'揪團中','classes' => 'bg-gray-200']);
 
 
-// });
+   $idea = Idea::factory()->create([ 
+    'user_id' =>$user->id,
+   'title' => 'My First Idea',
+   'category_id' => $categoryOne->id,
+   'status_id' => $statusOpen->id,
+   'description' => 'Description of my first idea',
+]);
+
+    Vote::factory()->create([
+        'idea_id' => $idea->id,
+        'user_id' => $user->id,
+    ]);
+
+    Vote::factory()->create([
+        'idea_id' => $idea->id,
+        'user_id' => $userB->id,
+    ]);
+
+    Livewire:: test(IdeasIndex::class)
+        ->assertViewHas('ideas', function ($ideas) {
+            return $ideas->first()->votes_count == 2;
+        });
+
+});
+
+
+
+
+
 
 
 

@@ -5,6 +5,7 @@ use App\Exceptions\VoteNotFoundException;
 use App\Exceptions\DuplicateVoteException ;
 use Livewire\Component;
 use App\Models\Idea;
+use App\Models\Vote;
 
 class IdeaIndex extends Component
 {

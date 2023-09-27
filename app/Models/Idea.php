@@ -13,8 +13,8 @@ class Idea extends Model
     use HasFactory, Sluggable;
     //分頁常數設定值ideacontroller.php
     const PAGINATION_COUNT = 10;
-    const CATEGORY_TUTORIAL_REQUEST = 'Tutorial Request';
-    const CATEGORY_LARACASTS_FEATURE = 'Laracasts Feature';
+    // const CATEGORY_TUTORIAL_REQUEST = 'Tutorial Request';
+    // const CATEGORY_LARACASTS_FEATURE = 'Laracasts Feature';
     
 protected $guarded = [];
 
