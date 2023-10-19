@@ -55,6 +55,7 @@
                         <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
                     @endif
                 @endauth
+
             </div>
         @endif
             <a href="#">
@@ -125,39 +126,17 @@
 
           </div>
      </div>
+
      <div class= "w-full px-2 md:px-0 md:w-175 ">
-       <nav class="hidden md:flex items-center  justify-between text-xs">
-                <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10 rounded-xl ">
-                    <li>
-                    <a href="" class="border-b-4 pb-3 border-blue">所有想法(99)</a>
-                </li>
-                    <li>
-                    <a href="" class="text-gray-400 transition duration-100 ease-in border-b-4 pb-3 hover:border-blue">諮詢 (50)</a>
-                </li>
-                    <li>
-                    <a href="" class="text-gray-400 transition duration-100 ease-in border-b-4 pb-3 hover:border-blue">進行中 (50)</a>
-                </li>
 
-                </ul>
+             
+    <livewire:status-filters />
+       
+        <div class="mt-8"></div>
+        {{$slot}}
+      </div>
 
 
-                <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
-                <li>
-                    <a href="" class="border-b-4 pb-3 border-blue">履行(10)</a>
-                </li>
-                <li>
-                    <a href="" class="text-gray-400 transition duration-100 ease-in border-b-4 pb-3 hover:border-blue">已結束 (55)</a>
-                </li>
-
-
-                </ul>
-
-
-       </nav>
-       <div class="mt-8"></div>
-       {{$slot}}
-     </div>
-    
    
        </main>
        <livewire:scripts />

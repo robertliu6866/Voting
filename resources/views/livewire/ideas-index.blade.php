@@ -29,14 +29,16 @@
 
 </div>
 <div class="ideas-container space-y-6 my-8">
-@foreach ( $ideas as $idea )
- <livewire:idea-index 
+   
+{{-- key="$idea->id"：這個屬性設置每個子組件的唯一鍵（key），確保每個子組件都有獨一無二的鍵。這是為了讓 Livewire 知道如何有效地更新 DOM --}}
+@foreach ($ideas as $idea)
+   <livewire:idea-index 
+
  :key="$idea->id"
  :idea="$idea"
  :votesCount="$idea->votes_count"
  />  
 @endforeach
-
 
 
 
